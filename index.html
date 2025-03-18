@@ -6,6 +6,7 @@
     <title>Haney Parmar - Art Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="scripts.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   </head>
   <body>
     <header>
@@ -13,7 +14,6 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -23,7 +23,11 @@
     <section id="home">
       <h2>Welcome to My Portfolio</h2>
       <p>Explore my artwork and designs.</p>
-      <img src="images/art1.webp" alt="Sample Artwork" />
+      <div class="social-links">
+        <a href="https://www.instagram.com/artfulhaney/" target="_blank">
+          Instagram
+        </a>
+    </div>
     </section>
 
       <h2>Gallery</h2>
@@ -32,27 +36,6 @@
         <span class="close" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="Full-size image">
     </div>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Hi, I'm Haney Parmar. I've been working in the art industry for about 2
-        years. My work focuses on capturing unique perspectives through design
-        and creativity.
-      </p>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: placeholder@example.com</p>
-      <p>Social Media: @yourhandle</p>
-      <form>
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </section>
 
     <footer>
       <p>&copy; 2025 Haney Parmar. All Rights Reserved.</p>
