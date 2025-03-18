@@ -1,40 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let images = [];
 
-    document.querySelectorAll(".sidebar-link").forEach(link => {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: "smooth"
-                });
-            }
-        });
+    for (let i = 1; i <= 25; i++) {
+        images.push(`images/IMG_${i}.JPG`);
+    }
+
+    const galleryContainer = document.querySelector(".row");
+    const columns = [[], [], [], []];
+
+    images.forEach((image, index) => {
+        columns[index % 4].push(image);
     });
 
-    const galleryContainer = document.getElementById("slider-container");
-    const zoomedImage = document.getElementById("zoomed-image");
+    columns.forEach((columnImages) => {
+        const columnDiv = document.createElement("div");
+        columnDiv.classList.add("column");
 
-    // List of uploaded images (update with your actual filenames)
-    const images = [
-        "images/art1.webp",
-        "images/art2.webp",
-        "images/art3.webp"
-    ];
-
-    // Set the first image as the default zoomed image
-    zoomedImage.src = images[0];
-
-    images.forEach(imageSrc => {
-        let img = document.createElement("img");
-        img.src = imageSrc;
-        img.alt = "Artwork";
-        img.classList.add("slider-thumbnail");
-        img.addEventListener("click", function () {
-            zoomedImage.src = imageSrc;
+        columnImages.forEach((imgSrc) => {
+            const imgElement = document.createElement("img");
+            imgElement.src = imgSrc
+            imgElement.onclick = () => openLightbox(imgSrc);
+            columnDiv.appendChild(imgElement);
         });
-        galleryContainer.appendChild(img);
-    });
+
+        galleryContainer.appendChild(columnDiv);
+    })
+
+    function openLightbox(imageSrc) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        
+        if (lightbox && lightboxImg) {
+            lightboxImg.src = imageSrc;
+            lightbox.style.display = "flex";
+        } else {
+            console.error("Lightbox elements not found in the document.");
+        }
+    }
+
 });
